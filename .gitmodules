@@ -1,0 +1,3 @@
+[submodule "client/libs/cltk"]
+	path = client/libs/cltk
+	url = http://github.com/sabinmarcu/cltk.git
