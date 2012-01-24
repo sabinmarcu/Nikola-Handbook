@@ -1,0 +1,3 @@
+[submodule "libs/cltk"]
+	path = libs/cltk
+	url = git@github.com:sabinmarcu/cltk.git
