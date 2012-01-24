@@ -1,0 +1,13 @@
+{
+	"name": "nikola",
+	"version": "v0.0.1",
+	"dependencies" : {
+		"coffee-script": "~1.1.2",
+		"less": "~1.2.1",
+		"stitch": "~0.3.2",
+		"express": "~2.5.0",
+		"eco": "1.1.0-rc-1",		
+		"mongoose": "~2.4.10",
+		"socket.io": "~0.8.7"
+	}
+}

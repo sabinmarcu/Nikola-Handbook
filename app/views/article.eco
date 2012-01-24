@@ -1,0 +1,18 @@
+<article>
+	<h1><%= @name %></h1>
+	<section>
+		<% for key, di of @_dis: %>
+			<label><%= @di %></label>
+			<input id="<%= @name+":"+key %>" value="<%= di %>" />
+		<% end %>
+		<span class="sectionSeparator"></span>
+		<% for key, de of @_des: %>
+			<label for="<%= @name+":"+key %>"><%= @de %></label>
+			<input id="<%= @name+":"+key %>" value="<%= de %>" />
+		<% end %>
+	</section>
+	<div class='snippetOptions'>
+		<span class="close optionButton">CLOSE</span>
+		<span class="save optionButton">SAVE</span>
+	</div>
+</article>
