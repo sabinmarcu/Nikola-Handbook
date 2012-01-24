@@ -1,0 +1,196 @@
+//simpless:!minify
+
+.radialgradient (@x: center, @y: center, @type: circle, @location: farthest-side, @first-color: rgba(0, 0, 0, 0.4),
+@second-color: "rgba(0, 0, 0, 0.7) 100%", @previous:none)
+{
+	background: -webkit-radial-gradient(@x @y, @type @location, @first-color, @second-color) no-repeat left top, @previous;
+	background: -moz-radial-gradient(@x @y, @type @location, @first-color, @second-color) no-repeat left top, @previous;
+	background: -o-radial-gradient(@x @y, @type @location, @first-color, @second-color) no-repeat left top, @previous;
+	background: -ms-radial-gradient(@x @y, @type @location, @first-color, @second-color) no-repeat left top, @previous;
+}
+.lineargradient (@from, @color1, @color2)
+{
+	background-image: linear-gradient(@from, @color1, @color2);
+	background-image: -o-linear-gradient(@arguments);
+	background-image: -moz-linear-gradient(@arguments);
+	background-image: -webkit-linear-gradient(@from, @color1, @color2);
+	background-image: -ms-linear-gradient(@arguments);
+}
+.anim (@duration: 0.5s, @what: all, @method: ease-in-out)	{
+    transition: @what @duration @method;
+    -o-transition: @what @duration @method;
+    -ms-transition: @what @duration @method;
+    -moz-transition: @what @duration @method;
+    -webkit-transition: @what @duration @method;
+}
+html
+{
+	margin: 0;
+	pading: 0;
+	width: 100%;
+	height: 100%;
+}
+body
+{
+ 	background: #fff;
+	.radialgradient(center, center, circle, farthest-side, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6) 100%,	url("/images/bgtexedit.jpg") repeat left top);
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 10pt;
+	font-family: "Helvetica", "Segoe UI";
+}
+@menucolor: #111;
+@menutextcolor: #258fcc;
+@menulineheight: 35px;
+@menuborderstyle: solid 15px transparent;
+.menuheaderhover {
+	border-bottom-color: #000;
+//	text-shadow: 0 0 3px @menutextcolor + #444;
+	color: @menutextcolor + #444
+}
+aside
+{
+    .lineargradient(bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)  25px);
+ 	position: absolute;
+ 	left: 0;
+ 	right: 0;
+ 	bottom: 0;
+	padding-left: 45px;
+	z-index: 9;
+	article{
+		margin: 0;
+		padding: 0;
+       	h2{
+			border-bottom: solid 35px @menucolor;
+			border-left: @menuborderstyle;
+			line-height: 35px;
+       		height: 0;
+       		padding: 0 25px 0 20px;
+       		margin: 0;
+       		font-size: 10pt;
+       		color: @menutextcolor;
+       		text-shadow: 0 1px 0px #000;
+       		cursor: pointer;
+       		display: inline-block;
+            vertical-align: bottom;
+        	&:hover{
+        	    .menuheaderhover
+           	}
+        }
+		ul{
+		    display: inline-block;
+            vertical-align: bottom;
+			margin: 0;
+			padding: 0;
+            line-height: @menulineheight;
+			article{
+			    height: auto;
+			    display: inline-block;
+				overflow: hidden;
+	            margin: 0 0 0 -15px;
+				h2	{
+					margin: 0;
+	                border-left: none;
+	                border-right: @menuborderstyle;
+				}
+				ul	{
+					border-top: solid 1px @menutextcolor;
+					display: none;
+					li {
+						display: block;
+						padding: 0 15px;
+	                    margin: 0;
+						background: #111;
+						color: #444;
+						line-height: @menulineheight;
+						height: @menulineheight;
+						&:hover{
+							color: white;
+							.lineargradient(bottom, @menutextcolor, @menutextcolor + #111)
+						}
+					}
+				}
+				&:hover ul{
+					display: block;
+				}
+				&:hover h2{
+				    .menuheaderhover
+               	}
+			}
+        }
+	}
+}
+aside *{
+	.anim(0.25s)
+}
+section{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 5;
+    article{
+        min-width: 250px;
+        min-height: 350px;
+        .radialgradient(center, center, circle, farthest-side, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) 100%);
+        border: solid 1px #000;
+        border-radius: 5px;
+        display: inline-block;
+        position: absolute;
+        color: white;
+        .snippetOptions{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        	.optionButton {
+        		display: inline-block;
+        		padding: 5px;
+        		margin: 0 2px;
+        		background: rgba(0, 0, 0, 0.8);
+        		border-radius: 5px;
+        		text-shadow: 0 0 1px white;
+                font-size: 8pt;
+        	}
+        }
+        h1{
+        	position: absolute;
+        	left: 10px;
+        	top: 0;
+        	right: 10px;
+        	line-height: 25px;
+        	height: 25px;
+        	font-size: 12pt;
+        	margin: 0;
+        	padding: 0;
+        }
+        section{
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+			right: 10px;
+			top: 35px;
+			border-radius: 5px;
+            .radialgradient(center, center, circle, farthest-side, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6) 100%);
+            padding: 10px 15px 10px 10px;
+            input {
+            	width: 100%;
+            	padding: 5px 0;
+            	border-radius: 2px;
+            	margin: 0;
+            	border: solid 1px #666;
+            	.lineargradient(top, #ddd, #ccc 100%);
+            }
+            span.sectionSeparator {
+            	margin: 25px 0;
+            	padding: none;
+            	display: block;
+            	width: 100%;
+            	border: dotted 1px #ccc
+            }
+        }
+    }
+}
