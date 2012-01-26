@@ -1,3 +1,6 @@
 [submodule "client/libs/cltk"]
 	path = client/libs/cltk
 	url = http://github.com/sabinmarcu/cltk.git
+[submodule "node_modules/coffee-script"]
+	path = node_modules/coffee-script
+	url = http://github.com/jashkenas/coffee-script.git

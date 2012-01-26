@@ -1,16 +1,13 @@
-class ArticlePrototype
-	constructor: (@_id) ->
-		@name = "Test"
-		@_dis = {
-			"a": "de intrare",
-			"b": "tot de intrare"
-		}
-		@_des = {
-			"c": "de iesire"
-		}
-		@_funcs = {
-			"_c" : "(function(){ return this.a * this.b })"
-		}
+Prototype = require("models/Prototype")
+
+class Article extends Prototype
+	init: (json) -> 	
+		console.log json
+		json ?= {}
+		@name = json.name || null
+		@_dis = json.DI || null
+		@_des = json.DE || null
+		@_funcs = json.FUNC || null
 		article = require("views/article")(@)
 		section = document.body.getElementsByTagName "section"
 		section = section[0]
@@ -23,20 +20,21 @@ class ArticlePrototype
 		@outputs = {}
 		@outputs[key] = document.getElementById(@name + ":" + key) for key, de of @_des
 		@_funcs[f] = eval(@_funcs[f]) for f of @_funcs
-		console.log @outputs, @inputs, @_funcs
 		return @
 
-	checkValues: () =>
+	checkValues: () -> 
 		invalid = false
 		invalid = true for key, input of @inputs when not input.value
 		unless invalid
 			@calculateDES()	
 
-	calculateDES: () =>
+	calculateDES: () ->			
 		for de, output of @outputs
 			valueSet = {}
 			valueSet[key] = o.value for key, o of @inputs
 			valueSet[key] = f for key, f of @_funcs
 			output.value = @_funcs["_" + de].call(valueSet)
-
-module.exports = new ArticlePrototype
+	
+		
+module.exports = Article
+module.exports.reuse = Object.create Article

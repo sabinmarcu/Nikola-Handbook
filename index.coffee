@@ -11,10 +11,10 @@ pub = __dirname + "/client"
 app = express.createServer()
 io = io.listen(app)
 
-packageData =
+pakData =
   paths: [pub + "/app"]
 
-packageData.dependencies = [
+pakData.dependencies = [
   pub + "/libs/cltk/CLFramework.coffee",
   pub + "/libs/cltk/CLUtils.coffee",
   pub + "/libs/cltk/CLDynamicFileLoader.coffee",
@@ -39,13 +39,13 @@ Snippet = mongoose.model("snippets", SnippetSchema)
 Snippet.find {}, (err, doc) ->
   console.log err, doc
 
-package = stitch.createPackage packageData
+pak = stitch.createPackage pakData
 
 app.configure ->
 	app.use app.router
 	app.use express.static(pub + "/public")
 	app.set "views", pub + "app/views"
-	app.get "/application.js", package.createServer()
+	app.get "/application.js", pak.createServer()
 	app.get "/bootstrap.js", (req, res) -> 
 		fs.readFile pub + "/app/script.coffee", 'utf-8', (err, data) ->
 			if err 
